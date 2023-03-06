@@ -1,0 +1,35 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+      packages: read
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Initialize CodeQL
+      uses: aeisenberg/codeql-action/init@aeisenberg/wip
+      with:
+        tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20230301/codeql-bundle-linux64.tar.gz
+        languages: javascript
+        config-file: .github/codeql/codeql-config.yml
+        registries: |
+          - url: "https://ghcr.io/v2/"
+            packages: "dsp-testing/codeql-data-extensions-demo"
+            token: "${{ secrets.DOTCOM_TOKEN }}"
+          - url: "https://containers.ghe.io/v2/"
+            packages: "dsp-testing/codeql-integration-testing-package"
+            token: "${{ secrets.GHE_TOKEN }}"
