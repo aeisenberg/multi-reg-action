@@ -7,4 +7,4 @@ query-filters:
 packs:
   javascript:
     - dsp-testing/codeql-data-extensions-demo
-    - dsp-testing/codeql-integration-testing-package
+    - dsp-testing/codeql-data-extensions-demo2
