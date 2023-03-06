@@ -23,15 +23,15 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Initialize CodeQL
-      uses: aeisenberg/codeql-action/init@aeisenberg/wip
+      uses: aeisenberg/codeql-action/init@main
       with:
         tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/codeql-bundle-20230301/codeql-bundle-linux64.tar.gz
         languages: javascript
         config-file: .github/codeql/codeql-config.yml
         registries: |
-          - url: "https://ghcr.io/v2/"
-            packages: "dsp-testing/codeql-data-extensions-demo"
-            token: "${{ secrets.DOTCOM_TOKEN }}"
           - url: "https://containers.ghe.io/v2/"
             packages: "dsp-testing/codeql-data-extensions-demo2"
             token: "${{ secrets.GHE_TOKEN }}"
+          - url: "https://ghcr.io/v2/"
+            packages: "dsp-testing/codeql-data-extensions-demo"
+            token: "${{ secrets.DOTCOM_TOKEN }}"
