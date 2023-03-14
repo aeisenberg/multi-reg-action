@@ -30,7 +30,8 @@ jobs:
         config-file: .github/codeql/codeql-config.yml
         registries: |
           - url: "https://containers.ghe.io/v2/"
-            packages: "dsp-testing/codeql-data-extensions-demo2"
+            packages: "dsp-testing/codeql-integration-testing-package"
+            # packages: "dsp-testing/codeql-data-extensions-demo2"
             token: "${{ secrets.GHE_TOKEN }}"
           - url: "https://ghcr.io/v2/"
             packages: "dsp-testing/codeql-data-extensions-demo"
